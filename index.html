@@ -33,12 +33,18 @@
 			</select>
 		</div>
 		<h1>Pylos</h1>
-		<p>Pylos is a collection of sharable computational design, environmental, and sustainable analysis tools, components, definitions, plugins, and other bits known as blocks. It was inspired by <a href="http://bl.ocks.org" target="_blank">Blocks</a> and <a href="https://github.com/HydraShare/hydra/wiki" target="_blank">Hydrashare</a> and is currently maintained by the computational design group and PPT. Learn how to <a href="./create.html">share your own blocks</a> or get <a href="./what.html">help</a>.</p>
+		<p>Pylos is a collection of sharable computational design, environmental, and sustainable analysis tools, components, definitions, plugins, and other bits known as blocks. <a href="#" onclick="d3.select('#more').style('display','inline'); d3.select(this).remove(); ">Learn more and help...</a><span id="more" style="display:none">It was inspired by <a href="http://bl.ocks.org" target="_blank">Blocks</a> and <a href="https://github.com/HydraShare/hydra/wiki" target="_blank">Hydrashare</a> and is currently maintained by the computational design group and PPT. Learn how to <a href="./create.html">share your own blocks</a> or get <a href="./what.html">help</a>.</span></p>
+		<p>
+			Start here: <a href="start.html">Get Started</a>, <a href="create.html">Add yours!</a>, <a href="./index.html?keywords=install">Install Components</a><br />
+			Quick categories: <a href="./index.html?keywords=grasshopper">Grasshopper</a>, <a href="./index.html?keywords=dynamo">Dynamo</a>, <a href="./index.html?keywords=diva">diva</a>
+		</p>
 	</header>
 	<div class="examples">
 	  <br clear="both">
 	  <div class="loading">Loading blocks; here we go...</div>
 	</div>
+	<div id="load_time"></div>
+
 
 <script type="text/javascript">
 
@@ -62,12 +68,9 @@
         document.getElementById("filtering").value = keywords.join(", ");
     }
 
-    // This call loads Hydras - get the Hydras from googlesheets
-    // filters them based on keywords
-    // and draws the for in the first page
+    // Get the blocks from the api, filter based on keywords and display first set
     jQuery(document).ready(loadBlocks());
 
-    // I'm copying these lines from Mike's code at http://bl.ocks.org/
     d3.select(window)
       .on("scroll", maybeFetch)
       .on("resize", maybeFetch);

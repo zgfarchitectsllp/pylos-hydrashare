@@ -190,3 +190,7 @@ a.example .date {
 a.example:hover .description {
   text-decoration: underline;
 }
+#load_time {
+  font-size: .5em;
+  color: #ddd;
+}
